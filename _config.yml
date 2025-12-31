@@ -68,6 +68,11 @@ exclude:
 # Timezone
 timezone: Asia/Seoul
 
+# Sass/SCSS settings
+sass:
+  sass_dir: _sass
+  style: compressed
+
 # Pagination (requires jekyll-paginate)
 # paginate: 10
 # paginate_path: "/page/:num/"
