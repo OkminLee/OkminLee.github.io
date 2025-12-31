@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header" style="text-align: center; padding: 2rem 0;">
+    <div class="post-meta" style="justify-content: center;">
+      <span class="post-date">{{ page.date | date: "%Y년 %m월 %d일" }}</span>
+      {% if page.categories.first %}
+      <span class="post-category {{ page.categories.first | downcase }}">
+        {{ page.categories.first }}
+      </span>
+      {% endif %}
+    </div>
+    <h1 style="margin-top: 1rem;">{{ page.title }}</h1>
+    {% if page.tags.size > 0 %}
+    <div class="post-tags" style="justify-content: center; margin-top: 1rem;">
+      {% for tag in page.tags %}
+      <a href="{{ '/tags#' | append: tag | relative_url }}" class="tag">#{{ tag }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+    <nav class="post-navigation" style="display: flex; justify-content: space-between; gap: 2rem;">
+      {% if page.previous.url %}
+      <a href="{{ page.previous.url | relative_url }}" style="flex: 1;">
+        <small style="color: var(--text-muted);">← 이전 글</small><br>
+        {{ page.previous.title | truncate: 30 }}
+      </a>
+      {% else %}
+      <span style="flex: 1;"></span>
+      {% endif %}
+
+      {% if page.next.url %}
+      <a href="{{ page.next.url | relative_url }}" style="flex: 1; text-align: right;">
+        <small style="color: var(--text-muted);">다음 글 →</small><br>
+        {{ page.next.title | truncate: 30 }}
+      </a>
+      {% endif %}
+    </nav>
+  </footer>
+</article>

@@ -1,0 +1,40 @@
+---
+layout: default
+title: 태그
+permalink: /tags/
+---
+
+<h1 style="text-align: center; margin: 2rem 0;">태그</h1>
+
+<div style="text-align: center; margin-bottom: 3rem;">
+  {% for tag in site.tags %}
+  <a href="#{{ tag[0] }}" class="tag" style="margin: 0.25rem; display: inline-block;">
+    #{{ tag[0] }} <span style="opacity: 0.6;">({{ tag[1].size }})</span>
+  </a>
+  {% endfor %}
+</div>
+
+<hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--border);">
+
+{% for tag in site.tags %}
+<section id="{{ tag[0] }}" style="margin-bottom: 3rem;">
+  <h2>#{{ tag[0] }}</h2>
+  <ul class="post-list">
+    {% for post in tag[1] %}
+    <li class="post-item">
+      <div class="post-meta">
+        <span class="post-date">{{ post.date | date: "%Y년 %m월 %d일" }}</span>
+        {% if post.categories.first %}
+        <span class="post-category {{ post.categories.first | downcase }}">
+          {{ post.categories.first }}
+        </span>
+        {% endif %}
+      </div>
+      <h3 class="post-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h3>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}

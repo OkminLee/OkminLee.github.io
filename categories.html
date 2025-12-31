@@ -1,0 +1,55 @@
+---
+layout: default
+title: 카테고리
+permalink: /categories/
+---
+
+<h1 style="text-align: center; margin: 2rem 0;">카테고리</h1>
+
+<div class="category-list">
+  <a href="#기술" class="category-card">
+    <div class="icon">💻</div>
+    <div class="name">기술</div>
+    <div class="count">{% assign tech_count = site.categories['기술'] | size %}{{ tech_count }}편</div>
+  </a>
+  <a href="#에세이" class="category-card">
+    <div class="icon">📝</div>
+    <div class="name">에세이</div>
+    <div class="count">{% assign essay_count = site.categories['에세이'] | size %}{{ essay_count }}편</div>
+  </a>
+  <a href="#창작" class="category-card">
+    <div class="icon">✨</div>
+    <div class="name">창작</div>
+    <div class="count">{% assign story_count = site.categories['창작'] | size %}{{ story_count }}편</div>
+  </a>
+  <a href="#일상" class="category-card">
+    <div class="icon">📔</div>
+    <div class="name">일상</div>
+    <div class="count">{% assign daily_count = site.categories['일상'] | size %}{{ daily_count }}편</div>
+  </a>
+  <a href="#마케팅" class="category-card">
+    <div class="icon">🎯</div>
+    <div class="name">마케팅</div>
+    <div class="count">{% assign marketing_count = site.categories['마케팅'] | size %}{{ marketing_count }}편</div>
+  </a>
+</div>
+
+<hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--border);">
+
+{% for category in site.categories %}
+<section id="{{ category[0] }}" style="margin-bottom: 3rem;">
+  <h2>{{ category[0] }}</h2>
+  <ul class="post-list">
+    {% for post in category[1] %}
+    <li class="post-item">
+      <div class="post-meta">
+        <span class="post-date">{{ post.date | date: "%Y년 %m월 %d일" }}</span>
+      </div>
+      <h3 class="post-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h3>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}
