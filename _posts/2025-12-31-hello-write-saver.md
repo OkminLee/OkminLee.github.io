@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Write-Saver로 시작하는 글쓰기 여정"
-date: 2024-12-31 12:00:00 +0900
+date: 2025-12-31 12:00:00 +0900
 categories: [일상]
 tags: [글쓰기, 시작, write-saver]
 ---
